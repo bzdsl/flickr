@@ -82,7 +82,7 @@ if (!isset($_SESSION['loggedin'])) {
             while ($images = mysqli_fetch_assoc($res)) {  ?>
 
                 <div class="alb">
-                    <img src="img/ <?= $images['image_url'] ?>">
+                    <img src="img/<?php echo $images['image_url']; ?>">
                 </div>
 
         <?php }
