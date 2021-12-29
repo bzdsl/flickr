@@ -16,7 +16,7 @@
     <!--------------------------------- NAVBAR ------------------------------------>
     <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-black">
         <div class="container-fluid">
-            <a href="#" class="navbar-brand"><img src="../img/Flickr_logo.png" class="logo" alt=""></a>
+            <a href="../admin.php" class="navbar-brand"><img src="../img/Flickr_logo.png" class="logo" alt=""></a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">

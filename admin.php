@@ -16,7 +16,9 @@ if (!isset($_SESSION['loggedin'])) {
     <link rel=" stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/admin-style.css">
+    <style>
 
+    </style>
 </head>
 
 <body>
@@ -42,17 +44,30 @@ if (!isset($_SESSION['loggedin'])) {
             <form class="d-flex">
                 <input class="form-control me-5" type="search" placeholder="Search" aria-label="Search">
                 <a class="me-5" href="admin/upload-photo.php" target="_blank"><i class="fas fa-upload"></i></a>
-                <a href="you.php"> <img class="avatar me-5 " src="img/hhh.PNG" alt=""></a>
+                <a href="you.php"><img class="avatar me-5 " src="img/hhh.PNG" alt=""></a>
                 <a href="process-logout.php"><i class="fas fa-sign-out"></i></a>
             </form>
 
         </div>
     </nav>
 
-    <section class="container-fluid">
+    <?php require_once "config/config.php"; ?>
+    <div class="container display">
+        <?php
+        $sql = "SELECT * FROM images ORDER BY id DESC";
+        $res = mysqli_query($conn,  $sql);
 
-    </section>
+        if (mysqli_num_rows($res) > 0) {
+            while ($images = mysqli_fetch_assoc($res)) {  ?>
 
+                <div class="alb">
+                    <img src="img/<?php echo $images['image_url']; ?>">
+                    <!-- <img src="<?php echo $images['image_url']; ?>" alt="" /> -->
+                </div>
+
+        <?php }
+        } ?>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

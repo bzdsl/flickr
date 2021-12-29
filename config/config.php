@@ -1,6 +1,4 @@
 <?php
-
-
 //Create Constants to Store Non Repeating Values
 define('SITEURL', 'http://localhost/web/BTL/');
 define('LOCALHOST', 'localhost');
