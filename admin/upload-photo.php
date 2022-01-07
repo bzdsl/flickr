@@ -41,16 +41,14 @@ if (!isset($_SESSION['loggedin'])) {
             </div>
         </div>
     </nav>
-    <?php if (isset($_GET['statusMsg'])) {
-        print $_GET['statusMsg'];
-    } ?>
-    <?php if (isset($_GET['error'])) : ?>
-        <p><?php echo $_GET['error']; ?></p>
-    <?php endif ?>
+
     <form action="upload-process.php" method="post" enctype="multipart/form-data">
-        <!-- Select Image File to Upload: -->
-        <input type="file" name="file">
+        <input type="text" name="filename" placeholder="Titles">
+
+        <input type="file" name="my_image">
+
         <input type="submit" name="submit" value="Upload">
+
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

@@ -28,7 +28,7 @@
                 <label for="subject">Subject</label>
                 <input id="subject" placeholder="Subject" class="form-control">
                 <label for="message">Message</label>
-                <textarea class="form-control" id="body" placeholder="Email Body"></textarea>
+                <textarea class="form-control" id="body" placeholder="Message"></textarea>
 
                 <input type="button" onclick="sendEmail()" value="Send An Email" class="btn btn-primary">
             </div>
