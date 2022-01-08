@@ -33,7 +33,7 @@ if (isset($_POST['name']) && isset($_POST['email'])) {
     $mail->Body = $body;
 
     if ($mail->send()) {
-        $status = "Success";
+        $status = "success";
         $response = "Email is sent!";
     } else {
         $status = "Failed";
