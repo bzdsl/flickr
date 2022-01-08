@@ -43,6 +43,7 @@ if (!isset($_SESSION['loggedin'])) {
             <form class="d-flex">
                 <input class="form-control me-5" type="search" placeholder="Search" aria-label="Search">
                 <a class="me-5" href="admin/upload-photo.php" target="_blank"><i class="fas fa-upload"></i></a>
+                <a href="admin/contact.php"><i class="fas fa-paper-plane me-5"></i></a>
                 <a href="you.php"> <img class="avatar me-5 " src="img/hhh.PNG" alt=""></a>
                 <a href="process-logout.php"><i class="fas fa-sign-out"></i></a>
             </form>

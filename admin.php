@@ -63,7 +63,15 @@ if (!isset($_SESSION['loggedin'])) {
 
                 <div class="alb">
                     <img src="img/upload/<?php echo $row['image_url']; ?>">
-                    <p class="text-center"><?php echo $row["title"] ?></p>
+                    <p class="text-center mt-1"><?php echo $row["title"] ?></p>
+
+                    <form action="admin/delete-img.php" method="POST">
+                        <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
+                        <input type="hidden" name="delete_url" value="<?php echo $row['image_url']; ?>">
+                        <input type="hidden" name="delete_title" value="<?php echo $row['title']; ?>">
+                        <button type="submit" name="submit" href="" class="btn btn-sm btn-danger ">Delete</button>
+                    </form>
+
                 </div>
 
         <?php }

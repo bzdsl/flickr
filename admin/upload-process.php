@@ -42,5 +42,5 @@ if (isset($_POST['submit'])) {
         header("Location: index.php?error=$em");
     }
 } else {
-    header("Location: upload-photo.php?");
+    header("Location: upload-photo.php?error");
 }
