@@ -3,13 +3,13 @@ session_start();
 if (!isset($_SESSION['loggedin'])) {
     header("location:login.php");
 }
+$id = $_GET['id'];
 ?>
-
 <!doctype html>
 <html lang="en">
 
 <head>
-    <title>Profile</title>
+    <title>Admin</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,41 +17,101 @@ if (!isset($_SESSION['loggedin'])) {
     <link rel=" stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/admin-style.css">
+    <style>
 
+    </style>
 </head>
 
 <body>
     <!--------------------------------- NAVBAR ------------------------------------>
     <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-black">
         <div class="container-fluid">
-            <a href="#" class="navbar-brand"><img src="img/Flickr_logo.png" class="logo" alt=""></a>
+            <a href="admin.php?id=<?php echo $id; ?>>" class="navbar-brand"><img src="img/Flickr_logo.png" class="logo" alt=""></a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-light" aria-current="page" href="you.php">You</a>
+                        <a class="nav-link text-light" aria-current="page" href="you.php?id=<?php echo $id; ?>">You</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="explore.php">Explore</a>
+                        <a class="nav-link text-light" href="#">Explore</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="print.php">Prints</a>
+                        <a class="nav-link text-light" href="#">Prints</a>
                     </li>
                 </ul>
             </div>
 
             <form class="d-flex">
                 <input class="form-control me-5" type="search" placeholder="Search" aria-label="Search">
-                <a class="me-5" href="admin/upload-photo.php" target="_blank"><i class="fas fa-upload"></i></a>
-                <a href="admin/contact.php"><i class="fas fa-paper-plane me-5"></i></a>
-                <a href="you.php"> <img class="avatar me-5 " src="img/hhh.PNG" alt=""></a>
+                <a class="me-5" href="admin/upload-photo.php?id=<?php echo $id; ?>"><i class="fas fa-upload"></i></a>
+                <a href="admin/contact.php?id=<?php echo $id; ?>"><i class="fas fa-paper-plane me-5"></i></a>
+                <a href="you.php?id=<?php echo $id; ?>"><img class="avatar me-5 " src="img/hhh.PNG" alt=""></a>
                 <a href="process-logout.php"><i class="fas fa-sign-out"></i></a>
             </form>
 
         </div>
     </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <?php require_once "config/config.php"; ?>
+    <div class="container">
+        <center>
+            <?php
+            $sql1 = "SELECT * FROM tbl_user where id='$id'";
+            $res1 = mysqli_query($conn,  $sql1);
+            $row12 = mysqli_fetch_assoc($res1)
+            ?>
+
+            <div>
+                <div>
+                    <h2>Giới thiệu</h2>
+                    <div>
+                        <div class="">Họ và Tên: <?php echo $row12['lname'];
+                                                    echo " ";
+                                                    echo $row12['fname']; ?></div>
+                    </div>
+                    <div class="">
+                        <div class="">Age: <?= $row12['age'] ?></div>
+                    </div>
+                    <div>
+                        <div class="">Email: <?= $row12['email'] ?></div>
+                    </div>
+                    <div class="">
+                        <a style="font-size: 15px;" class="btn" href="update.php?id=<?php echo $id; ?>">Thay đổi thông tin</a>
+                    </div>
+                </div>
+
+            </div>
+        </center>
+    </div>
+    <div class="container display">
+        <?php
+        $sql = "SELECT * FROM images where idkhach='$id'";
+        $res = mysqli_query($conn,  $sql);
+
+        if (mysqli_num_rows($res) > 0) {
+            while ($row = mysqli_fetch_assoc($res)) {  ?>
+
+                <div class="alb">
+                    <img src="img/upload/<?php echo $row['image_url']; ?>">
+                    <p class="text-center mt-1"><?php echo $row["title"] ?></p>
+
+                    <form action="admin/delete-img.php?id=<?php echo $id; ?>" method="POST">
+                        <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
+                        <input type="hidden" name="delete_url" value="<?php echo $row['image_url']; ?>">
+                        <input type="hidden" name="delete_title" value="<?php echo $row['title']; ?>">
+                        <center> <button type="submit" name="submit" href="" class="btn btn-sm btn-danger ">Delete</button> </center>
+                    </form>
+
+                </div>
+
+        <?php }
+        } ?>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

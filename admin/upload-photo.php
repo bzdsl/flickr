@@ -3,6 +3,10 @@ session_start();
 if (!isset($_SESSION['loggedin'])) {
     header("location:login.php");
 }
+
+$id = $_GET['id'];
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,12 +41,12 @@ if (!isset($_SESSION['loggedin'])) {
     <nav id="navTopP" class="navbar navbar-dark navbar-expand-md bg-gradientg py-0 fixed-top ">
         <div class="container-fluid">
             <div class="logo">
-                <a class="navbar-brand" href="../admin.php"><img class="logo" src="../img/Flickr_logo.png" alt=""></a>
+                <a class="navbar-brand" href="../admin.php?id=<?php echo $id; ?>"><img class="logo" src="../img/Flickr_logo.png" alt=""></a>
             </div>
         </div>
     </nav>
 
-    <form action="upload-process.php" method="post" enctype="multipart/form-data">
+    <form action="upload-process.php?id=<?php echo $id; ?>" method="post" enctype="multipart/form-data">
         <input type="text" name="filename" placeholder="Titles">
 
         <input type="file" name="my_image">

@@ -11,9 +11,16 @@ if (isset($_POST['btnLogin'])) {
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         $pwd_hash = $row['pwd'];
+        $id= $row['id'];
         if (password_verify($pwd, $pwd_hash)) {
             $_SESSION['loggedin'] = $email;
-            header("location: admin.php");
+
+
+
+            $url = "admin.php?id=" . $id . "";
+            header('location:' . $url);
+            
+
         } else {
             $error = "Email or password is not correct";
             header("location: login.php?error=$error");

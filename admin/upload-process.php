@@ -2,7 +2,7 @@
 
 if (isset($_POST['submit'])) {
     include "../config/config.php";
-
+    $id = $_GET['id'];
     echo "<pre>";
     print_r($_FILES['my_image']);
     echo "</pre>";
@@ -28,10 +28,11 @@ if (isset($_POST['submit'])) {
                 move_uploaded_file($tmp_name, $img_upload_path);
 
                 // Insert into Database
-                $sql = "INSERT INTO images(image_url,title) 
-				        VALUES('$new_img_name','$filename')";
+                $sql = "INSERT INTO images(image_url,title,idkhach) 
+				        VALUES('$new_img_name','$filename','$id')";
                 mysqli_query($conn, $sql);
-                header("Location: ../admin.php");
+                $url = "../admin.php?id=" . $id . "";
+                header('location:' . $url);
             } else {
                 $em = "You can't upload files of this type";
                 header("Location: index.php?error=$em");
