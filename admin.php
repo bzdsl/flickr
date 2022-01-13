@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['loggedin'])) {
     header("location:login.php");
 }
+$id = $_GET['id'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,27 +26,27 @@ if (!isset($_SESSION['loggedin'])) {
     <!--------------------------------- NAVBAR ------------------------------------>
     <nav id="mainNav" class="navbar navbar-expand-lg navbar-light bg-black">
         <div class="container-fluid">
-            <a href="admin.php" class="navbar-brand"><img src="img/Flickr_logo.png" class="logo" alt=""></a>
+            <a href="admin.php?id=<?php echo $id; ?>>" class="navbar-brand"><img src="img/Flickr_logo.png" class="logo" alt=""></a>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-light" aria-current="page" href="you.php">You</a>
+                        <a class="nav-link text-light" aria-current="page" href="you.php?id=<?php echo $id; ?>">You</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="explore.php">Explore</a>
+                        <a class="nav-link text-light" href="#">Explore</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="print.php">Prints</a>
+                        <a class="nav-link text-light" href="#">Prints</a>
                     </li>
                 </ul>
             </div>
 
             <form class="d-flex">
                 <input class="form-control me-5" type="search" placeholder="Search" aria-label="Search">
-                <a class="me-5" href="admin/upload-photo.php" target="_blank"><i class="fas fa-upload"></i></a>
-                <a href="admin/contact.php"><i class="fas fa-paper-plane me-5"></i></a>
-                <a href="you.php"><img class="avatar me-5 " src="img/hhh.PNG" alt=""></a>
+                <a class="me-5" href="admin/upload-photo.php?id=<?php echo $id; ?>"><i class="fas fa-upload"></i></a>
+                <a href="admin/contact.php?id=<?php echo $id; ?>"><i class="fas fa-paper-plane me-5"></i></a>
+                <a href="you.php?id=<?php echo $id; ?>"><img class="avatar me-5 " src="img/hhh.PNG" alt=""></a>
                 <a href="process-logout.php"><i class="fas fa-sign-out"></i></a>
             </form>
 
@@ -69,7 +70,7 @@ if (!isset($_SESSION['loggedin'])) {
                         <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
                         <input type="hidden" name="delete_url" value="<?php echo $row['image_url']; ?>">
                         <input type="hidden" name="delete_title" value="<?php echo $row['title']; ?>">
-                        <button type="submit" name="submit" href="" class="btn btn-sm btn-danger ">Delete</button>
+                        <!--<center> <button type="submit" name="submit" href="" class="btn btn-sm btn-danger ">Delete</button> </center>-->
                     </form>
 
                 </div>

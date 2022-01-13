@@ -1,5 +1,6 @@
 <?php
 include "../config/config.php";
+$idkhach = $_GET['id'];
 if (isset($_POST['submit'])) {
     $id = $_POST['delete_id'];
     $url = $_POST['delete_url'];
@@ -10,7 +11,8 @@ if (isset($_POST['submit'])) {
     if ($query_run) {
         unlink("../img/upload/'" . $url);
 
-        header("Location: ../admin.php");
+        $url = "../admin.php?id=" . $idkhach . "";
+        header('location:' . $url);
     } else {
         header("Location: test.php");
     }
