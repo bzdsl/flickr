@@ -73,7 +73,7 @@ $id = $_GET['id'];
                 <div>
                     <div class="">Email: <?= $row12['email'] ?></div>
                 </div>
-                <a style="font-size: 15px;" class="link-danger" href="update.php?id=<?php echo $id; ?>">Change info</a>
+                <a class="link-danger" href="update.php?id=<?php echo $id; ?>">Change info</a>
 
             </div>
         </div>
@@ -94,7 +94,7 @@ $id = $_GET['id'];
                             <input type="hidden" name="delete_id" value="<?php echo $row['id']; ?>">
                             <input type="hidden" name="delete_url" value="<?php echo $row['image_url']; ?>">
                             <input type="hidden" name="delete_title" value="<?php echo $row['title']; ?>">
-                            <center> <button type="submit" name="submit" href="" class="btn btn-sm btn-danger ">Delete</button> </center>
+                            <button type="submit" name="submit" href="" class="btn btn-sm btn-danger ">Delete</button>
                         </form>
 
                     </div>
@@ -121,6 +121,24 @@ $id = $_GET['id'];
                 <!-- Instagram -->
                 <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></a>
 
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+
+                <!-- Github -->
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+
+            <!-- Section: Form -->
+
+        </div>
+        <!--Grid row-->
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2020 Copyright:
+            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
     </footer>
     <!-- Footer -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
