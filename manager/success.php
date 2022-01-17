@@ -23,9 +23,9 @@
 
 			<form class="center col-xl-10 col-lg-9 col-md-8 col-sm-8">
 				<div class="alert alert-info center" role="alert">
-					<center> Thao tác đã <strong> Thành công </strong> mời bạn bấm <strong> Quay lại </strong> để về trang chủ </center>
+					<center> <strong> Successful </strong> Click <strong> here </strong> go back </center>
 				</div>
-				<center><a class="btn btn-danger" href="manager.php"><i class="fas fa-chevron-left"></i> Quay lại trang chủ.</a></center>
+				<center><a class="btn btn-danger" href="manager.php"><i class="fas fa-chevron-left"></i> Back.</a></center>
 			</form>
 
 		</div>
